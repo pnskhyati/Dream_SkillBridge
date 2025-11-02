@@ -78,11 +78,10 @@ export const AIPrepHubPage = ({ navigateTo }) => {
         setIsInterviewLoading(true);
         const currentHistory = [...interviewHistory, { role: 'user', text: userResponse }];
         setInterviewHistory(currentHistory);
-        const messageToSend = userResponse;
         setUserResponse('');
 
         try {
-            const response = await interviewChat.sendMessage({ message: messageToSend });
+            const response = await interviewChat.sendMessage({ message: userResponse });
             setInterviewHistory([...currentHistory, { role: 'ai', text: response.text }]);
         } catch (err) {
             console.error("Interview chat failed", err);
@@ -156,11 +155,10 @@ export const AIPrepHubPage = ({ navigateTo }) => {
         setIsResumeLoading(true);
         const currentHistory = [...resumeChatHistory, {role: 'user', text: resumeQuestion}];
         setResumeChatHistory(currentHistory);
-        const questionToSend = resumeQuestion;
         setResumeQuestion('');
         
         const filePart = { inlineData: { data: resumeDataUrl.split(',')[1], mimeType: resumeFile.type } };
-        const textPart = { text: `Based on the provided resume, answer the following question: "${questionToSend}"` };
+        const textPart = { text: `Based on the provided resume, answer the following question: "${resumeQuestion}"` };
         
         try {
             const response = await ai.models.generateContent({ model: 'gemini-2.5-flash', contents: { parts: [filePart, textPart] } });
@@ -265,7 +263,7 @@ export const AIPrepHubPage = ({ navigateTo }) => {
                                 <input type="file" id="resume-upload-prep" accept=".txt,.pdf,.doc,.docx" onChange={handleResumeFileChange} style={{display: 'none'}} />
                                 <label htmlFor="resume-upload-prep" className="file-upload-label">
                                     <DocumentIcon />
-                                    <span>{resumeFile ? resumeFile.name : 'Choose a resume file (.txt, .pdf, .doc, .docx)'}</span>
+                                    <span>{resumeFile ? resumeFile.name : 'Choose a resume file (.txt, .pdf, .docx)'}</span>
                                 </label>
                             </div>
                             {resumeFile && <p className="file-success">Resume loaded successfully!</p>}

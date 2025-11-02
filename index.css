@@ -1484,6 +1484,19 @@ body {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+.quiz-sub-options-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .quiz-sub-options-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .quiz-option-card {
     padding: 2rem 1.5rem;
     border-radius: 16px;
@@ -1511,6 +1524,8 @@ body {
 .quiz-card-1 { background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); }
 .quiz-card-2 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
 .quiz-card-3 { background: linear-gradient(135deg, #ffc3a0 0%, #ffafbd 100%); }
+.quiz-card-4 { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+
 
 /* Quiz Taking Stage */
 .quiz-taking-view {
