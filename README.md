@@ -7,6 +7,7 @@
 This contains everything you need to run your app locally.
 
 View your app in AI Studio: https://ai.studio/apps/drive/1aWgqZIF-rpkmHLgNawhOmlUAmBQ4XjvF
+Deployed app is in : https://final-dream-real-629630029093.us-west1.run.app/
 
 ## Run Locally
 
